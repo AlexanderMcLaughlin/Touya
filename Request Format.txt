@@ -1,0 +1,29 @@
+http://api.anidb.net:9001/httpapi?client=touya&clientver=1&protover=1&request=anime&aid={ANIME ID}
+
+http://api.anidb.net:9001/httpapi?client=touya&clientver=1&protover=1&request=anime&aid=12372
+
+_________________________________________________
+
+insert into main 
+values (type, url, main_title, episodes, start_date, end_date, description, rating, number_of_ratings, runtime, image);
+
+
+insert into main
+values ("TV Series", "https://anidb.net/anime/12372", "Bloodivores", 12, "2016-10-01", "2016-12-17", "This is a sample description", 2.05, 435, 25, "192040.jpg", 12372);
+_________________________________________________
+
+Make it so that requests are made to the API a random amount of time between 2 seconds and 4 seconds to throw off anything that might be suspicious
+
+Steps:
+Create a python file that will parse the anime title XML file for all anime tag "aid" members under animetitles and then call another python script
+-make sure to add randomized delay between iterations of the for loop
+That python script will take in the aid or "anime ID" as a command line argument and it will issue an HTTP request to the anidb database and call a script
+It will then send the output xml to another script for parsing and storing in the database (this will be tricky from a local computer, it will likely be much easier to do on the actual instance)
+Create the table that will be holding the data before proceeding
+Put the scripts on the ec2 instance for testing and working with the mysql database
+Create a bash script that will always run in the background of the instance and once every 3 months do the following
+-get the anime title xml file
+-store it in the same location as it was before
+-call the main python script
+-let it run in the background and populate
+

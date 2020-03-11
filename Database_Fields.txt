@@ -1,0 +1,11 @@
+Type - Exclude "TV Series" (Only in code)
+URL
+Main Title
+Episode Count
+Start Date
+End Date
+Description
+Permanent Rating
+-Count
+Get the mode of Run times on episodes
+Picture
